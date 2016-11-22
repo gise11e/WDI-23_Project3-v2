@@ -30,9 +30,9 @@
       <div>
         <div ng-if="profile.isOwnProfile()" class="images">
           <button ng-click=""><a ui-sref="groupsNew" ui-sref-active="active">Create group</a></button>
-          <input class="u-full-width" type="text" name="profileImage" placeholder="add image upload" ng-model="profile.imageToAdd"></input>
-          <button ng-click="profile.addImage()">Upload image</button><br>
-          <a ng-href="/#/profile/{{profile.user._id}}/edit">Edit Profile</a>
+          <button>
+            <a ng-href="/#/profile/{{profile.user._id}}/edit">Edit Profile</a>
+          </button>
         </div>
       </div>
     </div>

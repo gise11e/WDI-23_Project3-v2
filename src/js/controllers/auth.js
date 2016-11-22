@@ -11,6 +11,8 @@ function RegisterController($auth, $state) {
     $auth.signup(register.user)
     .then(() => {
       $state.go('login');
+    }).catch((response) => {
+      console.log(response);
     });
   }
 

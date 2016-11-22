@@ -1,0 +1,104 @@
+<section class="profilePage">
+  <div class="row">
+
+
+    <div class="four columns" id="container1" style="margin: 1%; padding:18px; border-radius:10px;">
+      <img ng-src="{{ profile.user.profileImage }}" alt="profileImage" height="200px" width="200px" style="border-radius:100px;" />
+      <!-- <drag-drop base64="upload.base64"></drag-drop> -->
+      <p>{{ profile.user.fullName }}</p>
+
+      <!-- usersCurrentMatches -->
+       <ul ng-if="profile.isOwnProfile()">
+        <li ng-repeat="match in profile.usersMatches" style="list-style: none;">You are getting a gift for <a ng-href="#/profile/{{ match.with._id }}">{{ match.with.fullName }}</a>
+        </li>
+      </ul>
+
+      <ul style="list-style: none;">
+        <strong>{{ profile.user.fullName }}'s groups:</strong>
+        <li ng-repeat="groups in profile.usersGroups"><a ng-href="/#/group/profile/{{groups._id}}">{{ groups.groupName }}</a></li>
+      </ul>
+      <div>
+        <div ng-if="profile.isOwnProfile()" class="images">
+          <button ng-click=""><a ui-sref="groupsNew" ui-sref-active="active">Create group</a></button>
+          <input class="u-full-width" type="text" name="profileImage" placeholder="add image upload" ng-model="profile.imageToAdd"></input>
+          <button ng-click="profile.addImage()">Upload image</button><br>
+          <a ng-href="/#/profile/{{profile.user._id}}/edit">Edit Profile</a>
+        </div>
+      </div>
+    </div>
+    <div class="four columns" id="container2" style=" margin: 1%; padding:18px; border-radius:10px;">
+      <div class="six columns">
+        <h5><strong>YAY🎁</strong></h5>
+        <div class="likes" ng-repeat="likes in profile.user.likes track by $index">
+
+          <a ng-click="profile.getGifts(likes,'etsy')"> {{likes}} </a>
+
+          <div ng-if="profile.isOwnProfile()" ng-click="profile.removeLike(likes, $index)" class="deleteButton">&#10006;</div>
+
+        </div>
+      </div>
+      <div class="six columns">
+        <h5><strong>NAY💩</strong></h5>
+        <div class="dislikes" ng-repeat="dislikes in profile.user.dislikes track by $index">
+          <a>{{dislikes}}</a>
+          <div ng-if="profile.isOwnProfile()" ng-click="profile.removeDislike(dislikes, $index)" class="deleteButton">&#10006;</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="four columns" id="container3" style=" padding: 18px; border-radius:10px;" ng-if="profile.isOwnProfile()">
+      <div class="textContainer">
+
+        <div class="userPreferences">
+          {{profile.message}}
+          <div class="addLikesAndDislikes">
+            <div class="likes">
+              <!-- <form ng-submit="profile.submit()"> -->
+              <h6>what's your fave colour or book author? are you into sports? do you just love cacti? write about some of your fave things to give your secret santa a clue!</h6>
+              <input class="u-full-width" type="text" name="like" ng-model="profile.likeToAddToArray">
+              <button ng-click="profile.add()">Add Like</button>
+            </ul><li ng-repeat="like in profile.likeArray track by $index">{{ like }}</li></ul>
+          </div>
+          <div class="dislikes">
+            <h6>are you allergic to chocolate? do you have a phobia of scarves? write about what your secret santa should avoid!</h6>
+            <input class="u-full-width" type="text" name="dislike" ng-model="profile.dislikeToAddToArray"></input>
+            <button ng-click="profile.addDislikes()">Add Dislike</button>
+            <!-- </ul><li ng-repeat="dislike in profile.dislikeArray track by $index">{{dislike}} </li></ul> -->
+          </div>
+        </div>
+        <!-- </form> -->
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<br>
+
+  <div class="giftIdeas" style="padding: 18px; border-radius:10px;" ng-if="!profile.isOwnProfile()">
+    <div ng-if="profile.site=='amazon'">
+      <h2>suggestions from Amazon</h2>
+      <a ng-click="profile.getGifts(randomLike,'etsy')"> <p> Switch to Etsy </p></a>
+    </div>
+      <div ng-if="profile.site=='etsy'">
+        <h2>suggestions from Etsy</h2>
+        <a ng-click="profile.getGifts(randomLike,'amazon')"> <p> Switch to Amazon </p></a>
+      </div>
+    <div class="loader" ng-if="!profile.loaded"></div>
+      <ul>
+        <li style="margin-bottom:10px;" class="giftIdeasList" ng-repeat="gift in profile.giftArray" ng-if="gift.MediumImage.URL">
+          <img ng-src="{{gift.MediumImage.URL}}"><br>
+          <a ng-href="{{gift.DetailPageURL}}">{{ gift.ItemAttributes.ListPrice.FormattedPrice }}</a>
+        </li>
+      </ul>
+  <ul>
+    <li class="giftIdeasList" ng-repeat="gift in profile.giftArray" ng-if="gift.MediumImage.URL">
+      <img ng-src="{{gift.MediumImage.URL}}"><br>
+      <a ng-href="{{gift.DetailPageURL}}">{{ gift.ItemAttributes.ListPrice.FormattedPrice }}</a>
+    </li>
+  </ul>
+  </div>
+  <footer>
+    <h5 >e l <img src="../images/bg2.gif" width="30px" alt="" />f y</h5>
+  </footer>
+  </section>

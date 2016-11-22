@@ -1,0 +1,24 @@
+{
+  "name": "wdi23-project3",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "mickyginger <mickyginger@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/mickyginger/WDI_LDN_23_CLASSWORK",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.2",
+    "angular-resource": "^1.5.8",
+    "satellizer": "^0.15.5",
+    "skeleton": "^2.0.4"
+  }
+}

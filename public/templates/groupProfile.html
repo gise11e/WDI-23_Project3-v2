@@ -1,0 +1,41 @@
+<section class="groupProfile">
+
+<div class="groupContainer">
+ <h2>   {{ groupsShow.group.groupName }} </h2>
+
+ <button ng-click="groupsShow.drawMatches()" class="draw">DRAW NAMES</button>
+ <!-- {{groupsShow.group}} -->
+
+ <h4>Group Members</h4>
+
+ <div class="members">
+   <ul>
+
+     <li class="membersList" ng-repeat="members in groupsShow.group.groupMembers"> <a ng-href="#/profile/{{ members._id }}">{{members.fullName}}</a><br>
+       <img ng-src="{{members.profileImage}}" height="200px" width="200px" style="border-radius:100px; border:1px black solid;"/>
+      </li>
+
+
+   </ul>
+ </div>
+
+  <div class="invites">
+    <div class="row">
+      <!-- <label>Email</label> -->
+      <input type="email" placeholder="email" ng-model="groupsShow.emailToAddToArray">
+      <button ng-click="groupsShow.addEmail()">Add Participant</button>
+      <button ng-click="groupsShow.sendEmail()">Send Invites</button>
+    </div>
+
+   <!-- <strong>Invitees</strong> -->
+   <p>
+     {{ groupsShow.message }}
+   </p>
+   <ul>
+     <li style="list-style: none;" ng-repeat="email in groupsShow.emailArray track by $index" > {{email}}</li>
+   </ul>
+
+  </div>
+
+</div>
+</section>

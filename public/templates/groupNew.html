@@ -1,0 +1,23 @@
+<section class="newGroupForm">
+		 <form novalidate ng-submit="groupsNew.createGroupProfile()">
+    <div class="row">
+      <label>Name</label>
+      {{ groupsNew.group }}
+      <input class="u-full-width" type="text" placeholder="Group Name" ng-model="groupsNew.group.groupName">
+    </div>
+    <div class="row">
+      <label>Budget</label>
+      <input class="u-full-width" type="number" placeholder="£" ng-model="groupsNew.group.budget">
+    </div>
+    <div class="row">
+      <label>Event Date</label>
+      <input class="u-full-width" type="date" placeholder="Event Date" ng-model="groupsNew.group.eventDate">
+    </div>
+    <div class="row">
+      <div class="row">
+
+
+  <button>Create Group</button>
+
+  </form>
+</section>

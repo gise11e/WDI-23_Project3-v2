@@ -20,6 +20,8 @@ function RegisterController($auth, $state) {
       if(res.data.error.errors.passwordConfirmation) {
         register.form.passwordConfirmation.$setValidity('match', false);
       }
+    }).catch((response) => {
+      console.log(response);
     });
   }
 

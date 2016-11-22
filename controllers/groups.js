@@ -199,6 +199,14 @@ function getUsersGroups(req, res) {
 //   });
 // }
 
+function groupsGetAdmin(req, res) {
+  Group.findById(req.params.id)
+  .exec((err, group) => {
+    if(err) return res.status(500).json({ error: err });
+    if(!group) return res.status(404).json({ error: 'Not found' });
+    return res.json(group.groupAdmin);
+  });
+}
 
 module.exports = {
   index: groupsIndex,
@@ -206,7 +214,8 @@ module.exports = {
   show: groupsShow,
   update: groupsUpdate,
   draw: groupDraw,
-  getUsersGroups: getUsersGroups
+  getUsersGroups: getUsersGroups,
+  getGroupAdmin: groupsGetAdmin
   // getUsersMatches: getUsersMatches
   // delete: groupsDelete
 };

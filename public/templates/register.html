@@ -1,20 +1,26 @@
 <section class="form">
-  <form novalidate ng-submit="register.submit()">
+  <form ng-submit="register.submit()">
     <div class="row">
       <label>Full Name</label>
-      <input class="u-full-width" type="text" placeholder="Full Name" ng-model="register.user.fullName">
+      <input class="u-full-width" type="text" name="fullName" placeholder="Full Name" ng-model="register.user.fullName" required="required">
+      <div ng-messages="register.form.fullName.$error" ng-show="register.form.fullName.$dirty">
+          </div>
     </div>
     <div class="row">
       <label>Email</label>
-      <input class="u-full-width" type="email" placeholder="Email" ng-model="register.user.email">
+      <input class="u-full-width" type="email" name="email" placeholder="Email" ng-model="register.user.email" required="required">
+      <div ng-messages="register.form.email.$error" ng-show="register.form.email.$dirty" >
+          </div>
     </div>
     <div class="row">
       <label>Profile Image</label>
-      <input class="u-full-width" type="text" placeholder="Profile Image" ng-model="register.user.profileImage">
+      <input class="u-full-width" type="text" placeholder="Profile Image - You can skip this!" ng-model="register.user.profileImage">
     </div>
     <div class="row">
       <label>Password</label>
-      <input class="u-full-width" type="password" placeholder="Password" ng-model="register.user.password">
+      <input class="u-full-width" type="password" name="password" placeholder="Password" ng-model="register.user.password" minlength="5" required="required">
+      <div ng-messages="register.form.password.$error" ng-show="register.form.email.$dirty">
+          </div>
     </div>
     <div class="row">
       <label>Password Confirmation</label>

@@ -1,14 +1,20 @@
 <section class="form">
-<form novalidate ng-submit="login.submit()">
+<form ng-submit="login.submit()">
   <div class="row">
     <label>Email</label>
-    <input class="u-full-width" type="email" placeholder="Email" ng-model="login.credentials.email">
+    <input class="u-full-width" type="email" name="email" placeholder="Email" ng-model="login.credentials.email" required="required">
+    <div ng-messages="login.form.email.$error" ng-show="register.form.email.$dirty" >
+        </div>
   </div>
   <div class="row">
     <label>Password</label>
-    <input class="u-full-width" type="password" placeholder="Password" ng-model="login.credentials.password">
+    <input class="u-full-width" type="password" name="password" placeholder="Password" ng-model="login.credentials.password" required="required">
+    <div ng-messages="login.form.password.$error" ng-show="register.form.password.$dirty">
+        </div>
   </div>
   <button >Login</button>
 </form>
+
+<li style="list-style:none;"><a ng-href="/#/">Go Back</a></li>
 
 </section>

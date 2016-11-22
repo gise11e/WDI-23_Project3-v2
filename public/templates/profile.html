@@ -48,7 +48,7 @@
         </div>
       </div>
       <div class="six columns">
-        <h5><strong>💩 avoid these!</strong></h5><h6 style="text-align:center;">what to avoid</h6>
+        <h5><strong>💩 avoid these!</strong></h5>
         <div class="dislikes" ng-repeat="dislikes in profile.user.dislikes track by $index">
           <a>{{dislikes}}</a>
           <div ng-if="profile.isOwnProfile()" ng-click="profile.removeDislike(dislikes, $index)" class="deleteButton">&#10006;</div>

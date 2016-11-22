@@ -15,17 +15,17 @@
     <div class="columns" ng-class="{ six: !profile.isOwnProfile(), four: profile.isOwnProfile() }" id="container1" style="margin: 1%; padding:18px; border-radius:10px;">
       <img ng-src="{{ profile.user.profileImage }}" alt="profileImage" height="200px" width="200px" style="border-radius:100px;" />
       <!-- <drag-drop base64="upload.base64"></drag-drop> -->
-      <p>{{ profile.user.fullName }}</p>
+      <h5 class="names">{{ profile.user.fullName }}</h5>
 
       <!-- usersCurrentMatches -->
        <ul ng-if="profile.isOwnProfile()">
         <li ng-repeat="match in profile.usersMatches" style="list-style: none;">You are <a ng-href="#/profile/{{ match.with._id }}">{{ match.with.fullName }}</a> 's secret santa
         </li>
       </ul>
+      <strong> 🎄 YOUR GROUPS 🎅</strong>
 
-      <ul style="list-style: none;">
-        <strong>{{ profile.user.fullName }}'s groups:</strong>
-        <li ng-repeat="groups in profile.usersGroups"><a ng-href="/#/group/profile/{{groups._id}}" >{{ groups.groupName }}</a></li>
+      <ul style="margin: 10px; list-style: none; border: 0.5px solid gray; padding: 2px; border-radius: 10%;">
+        <li class="names" ng-repeat="groups in profile.usersGroups"> <h5><a ng-href="/#/group/profile/{{groups._id}}" >{{ groups.groupName }}</a></h5></li>
       </ul>
       <div>
         <div ng-if="profile.isOwnProfile()" class="images">

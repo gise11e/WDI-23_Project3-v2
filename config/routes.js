@@ -29,11 +29,8 @@ router.route('/groups/:id')
 .put(groupsController.update);
 
 router.route('/groups')
-.get(groupsController.index);
-// .post(groupsController.create);
-
-
-
+.get(groupsController.index)
+.post(groupsController.create);
 
 
 

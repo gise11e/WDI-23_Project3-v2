@@ -14,16 +14,6 @@
   </header>
   <body ng-controller="MainController as main">
 
-    <div class="row">
-      <div class="six columns">
-    <nav>
-      <ul>
-        <li class="logout" ng-if="main.isLoggedIn()" style="text-align:right;"><a ng-click="main.logout()">LOG OUT</a></li>
-        <li ng-if="main.isLoggedIn()" style="text-align:right; list-style: none;"><a ng-href="/#/profile/">My Profile</a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
 
     <!-- Use main message to pass messages to user, for example when they follow email invite or submit non-valid form -->
         <p ng-if="main.message">{{main.message}}</p>

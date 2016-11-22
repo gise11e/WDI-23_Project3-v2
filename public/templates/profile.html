@@ -1,7 +1,14 @@
 <section class="profilePage">
+  <header>
+  <nav>
+    <h5 ng-click="main.toggleMenu()">e l <img src="../images/bg2.gif" width="30px" alt="" />f y</h5>
+    <ul ng-if="main.menuVisible">
+      <li class="logout" ng-if="main.isLoggedIn()"><a ng-click="main.logout()">LOG OUT</a></li>
+      <li ng-if="main.isLoggedIn()"><a ng-href="/#/profile/">MY PROFILE</a></li>
+    </ul>
+  </nav>
+</header>
   <div class="row">
-
-
     <div class="four columns" id="container1" style="margin: 1%; padding:18px; border-radius:10px;">
       <img ng-src="{{ profile.user.profileImage }}" alt="profileImage" height="200px" width="200px" style="border-radius:100px;" />
       <!-- <drag-drop base64="upload.base64"></drag-drop> -->
@@ -91,14 +98,6 @@
           <a ng-href="{{gift.DetailPageURL}}">{{ gift.ItemAttributes.ListPrice.FormattedPrice }}</a>
         </li>
       </ul>
-  <ul>
-    <li class="giftIdeasList" ng-repeat="gift in profile.giftArray" ng-if="gift.MediumImage.URL">
-      <img ng-src="{{gift.MediumImage.URL}}"><br>
-      <a ng-href="{{gift.DetailPageURL}}">{{ gift.ItemAttributes.ListPrice.FormattedPrice }}</a>
-    </li>
-  </ul>
   </div>
-  <footer>
-    <h5 >e l <img src="../images/bg2.gif" width="30px" alt="" />f y</h5>
-  </footer>
+
   </section>

@@ -2,8 +2,8 @@ angular.module('elfyApp')
 .controller('RegisterController', RegisterController)
 .controller('LoginController', LoginController);
 
-RegisterController.$inject = ['User','$auth', '$state'];
-function RegisterController(User, $auth, $state) {
+RegisterController.$inject = ['$auth', '$state'];
+function RegisterController($auth, $state) {
   const register = this;
   register.user = {};
 
@@ -11,12 +11,20 @@ function RegisterController(User, $auth, $state) {
     $auth.signup(register.user)
     .then(() => {
       $state.go('login');
+    })
+    .catch((res) => {
+      console.log(res);
+      if(res.data.error.code && res.data.error.code === 11000) {
+        register.form.email.$setValidity('taken', false);
+      }
+      if(res.data.error.errors.passwordConfirmation) {
+        register.form.passwordConfirmation.$setValidity('match', false);
+      }
     });
   }
 
   register.submit = submit;
 }
-
 
 LoginController.$inject = ['User','$auth','$state', '$window'];
 

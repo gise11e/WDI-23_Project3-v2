@@ -21,7 +21,6 @@ function setPasswordConfirmation(passwordConfirmation) {
   this._passwordConfirmation = passwordConfirmation;
 }
 
-
 function validateEmail(email) {
   if (!validator.isEmail(email)) {
     return this.invalidate('email', 'must be a valid email address');
@@ -33,6 +32,7 @@ function validatePassword(password){
 }
 
 function preValidate(next) {
+  console.log(preValidate, this);
   if (this.isNew) {
     if (!this._password && !this.facebookId) {
       this.invalidate('password', 'A password is required.');

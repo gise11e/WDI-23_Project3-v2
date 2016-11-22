@@ -1,5 +1,5 @@
 angular
-.module('elfyApp', ['ngResource', 'ui.router', 'satellizer'])
+.module('elfyApp', ['ngMessages', 'ngResource', 'ui.router', 'satellizer'])
 .config(Router)
 .config(Auth);
 

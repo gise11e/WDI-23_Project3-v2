@@ -3,7 +3,7 @@ angular.module('elfyApp')
 .controller('LoginController', LoginController);
 
 RegisterController.$inject = ['User','$auth', '$state'];
-function RegisterController(User, $auth, $state ) {
+function RegisterController(User, $auth, $state) {
   const register = this;
   register.user = {};
 

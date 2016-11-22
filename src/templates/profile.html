@@ -24,7 +24,7 @@
       </ul>
 
       <nav>
-        <strong  ng-click="profile.toggleMenu()"> 🎄GROUPS 🎅</strong>
+        <button><strong ng-click="profile.toggleMenu()"> 🎄GROUPS 🎅</strong></button>
         <ul ng-if="profile.menuVisible" style="margin:5px; list-style: none; border: 0.5px solid gray; padding: 2px; border-radius: 10px; position: relative;">
           <li class="names" ng-repeat="groups in profile.usersGroups"> <h5><a ng-href="/#/group/profile/{{groups._id}}">{{ groups.groupName }}</a></h5></li>
         </ul>

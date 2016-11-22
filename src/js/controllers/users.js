@@ -11,20 +11,34 @@ function UsersIndexController(User) {
   usersIndex.all = User.query();
 }
 
-ProfileController.$inject = ['User', '$state', '$auth', '$http', '$scope'];
-function ProfileController(User, $state, $auth, $http, $scope) {
+ProfileController.$inject = ['User', '$state', '$auth', '$http', '$scope', '$rootScope'];
+function ProfileController(User, $state, $auth, $http, $scope, $rootScope) {
   const profile = this;
   const userData = $auth.getPayload();
+  profile.menuVisible = false;
+
+  $rootScope.$on('$stateChangeStart', () => {
+    profile.menuVisible = false;
+  });
+
+  function toggleMenu() {
+    profile.menuVisible = !profile.menuVisible;
+  }
+
+  profile.toggleMenu = toggleMenu;
+
 
   let id = $state.params.id;
 
   profile.usersMatches;
 
-  let usersId = userData._id;
+  const usersId = userData._id;
+
 
   if (id === '') {
     id = usersId;
   }
+
 
   // is user viewing own profile?
 
@@ -47,6 +61,8 @@ function ProfileController(User, $state, $auth, $http, $scope) {
   // User.get({match: match._id }, (matchedUser) => {
   //   profile.match = matchedUser;
   // });
+
+
 
   function addLikes() {
     event.preventDefault();
@@ -91,7 +107,7 @@ function ProfileController(User, $state, $auth, $http, $scope) {
 
     const $index = profile.user.likes.indexOf(thing);
     profile.user.likes.splice($index, 1);
-    profile.user.$update((res) => {
+    profile.user.$update(() => {
       $state.reload();
     });
   }
@@ -99,7 +115,7 @@ function ProfileController(User, $state, $auth, $http, $scope) {
   function removeDislike(thing, index) {
     const $index = profile.user.dislikes.indexOf(thing);
     profile.user.dislikes.splice($index, 1);
-    profile.user.$update((res) => {
+    profile.user.$update(() => {
       $state.reload();
     });
   }
@@ -109,7 +125,7 @@ function ProfileController(User, $state, $auth, $http, $scope) {
 
     profile.user.profileImage = profile.imageToAdd;
 
-    profile.user.$update((res) => {
+    profile.user.$update(() => {
       $state.reload();
 
     });
@@ -166,7 +182,7 @@ function ProfileController(User, $state, $auth, $http, $scope) {
 
     const requestURL = '/gifts/'+site+'/'+keyword;
 
-    if (site === "amazon") {
+    if (site === 'amazon') {
 
       return $http({
         url: requestURL,
@@ -190,7 +206,7 @@ function ProfileController(User, $state, $auth, $http, $scope) {
         for (let i=0; i < 12 && i < data.data.results.length; i++) {
 
           // transpose ETSY formatted response in amzn response format & add to giftArray
-          let etsyItem = {
+          const etsyItem = {
             DetailPageURL: data.data.results[i].url,
             MediumImage: {
               URL: data.data.results[i].MainImage.url_170x135
@@ -205,26 +221,26 @@ function ProfileController(User, $state, $auth, $http, $scope) {
         }
         console.log(profile.giftArray);
 
-    }, (response)  => {
-      console.log(response);
-    });
+      }, (response)  => {
+        console.log(response);
+      });
+    }
+
+
   }
+  getUserGroups();
+  getUserMatches();
 
+  profile.add = addLikes;
+  profile.getGifts = getGifts;
+  profile.addDislikes = addDislikes;
+  profile.removeLike = removeLike;
+  profile.removeDislike = removeDislike;
 
-}
-getUserGroups();
-getUserMatches();
-
-profile.add = addLikes;
-profile.getGifts = getGifts;
-profile.addDislikes = addDislikes;
-profile.removeLike = removeLike;
-profile.removeDislike = removeDislike;
-
-profile.isOwnProfile = isOwnProfile;
-profile.giftArray = [];
-profile.loaded = false;
-profile.addImage = addImage;
+  profile.isOwnProfile = isOwnProfile;
+  profile.giftArray = [];
+  profile.loaded = false;
+  profile.addImage = addImage;
 
 
 }

@@ -9,14 +9,13 @@ function MainController($auth, $state, $rootScope, $http) {
   main.message = null;
   main.menuVisible = false;
 
-
-function toggleMenu() {
-  if (main.menuVisible === false) {
-    main.menuVisible = true;
-  } else {
+  $rootScope.$on('$stateChangeStart', () => {
     main.menuVisible = false;
+  });
+
+  function toggleMenu() {
+    main.menuVisible = !main.menuVisible;
   }
-}
 
   function logout() {
     $auth.logout()

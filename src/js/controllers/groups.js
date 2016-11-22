@@ -65,7 +65,7 @@ function GroupsShowController(Group, $state, $auth, $http) {
       url: '/groups/' + groupsShow.group._id + '/draw',
       headers: { authorizaton: token }
     };
-    $http(req).then((res) => alert('drawn group'));
+    $http(req).then(() => alert('drawn group'));
   }
 
   const userData = $auth.getPayload();
@@ -100,7 +100,7 @@ function GroupsShowController(Group, $state, $auth, $http) {
     $http(req)
     .then((res) => {
       groupsShow.emailArray = [];
-      groupsShow.message = 'Your Invites Have Been Sent!'
+      groupsShow.message = 'Your Invites Have Been Sent!';
       console.log(res);
     });
   }
@@ -146,7 +146,9 @@ function GroupsJoinController(Group, User, $state, $auth, $window) {
     // if yes, get the group
     Group.get({ id: groupId }, (group) => {
 
-    const isInGroup = group.groupMembers.filter(function(member){ return member._id === userId; });
+      const isInGroup = group.groupMembers.filter(function(member){
+        return member._id === userId;
+      });
 
       if (isInGroup.length === 0) {
         group.groupMembers.push(userId);
@@ -154,13 +156,12 @@ function GroupsJoinController(Group, User, $state, $auth, $window) {
           $state.go('groupProfile', {id: groupId });
         });
 
-      }  else {
+      } else {
         $state.go('groupProfile', {id: groupId });
       }
     });
-  }
-  else {
-    console.log("hey");
+  } else {
+    console.log('hey');
     // if no, store the group Id in localStorage, redirect the user to login/register state(s)
     $window.localStorage.setItem('groupId', $state.params.groupId);
     $state.go('register');

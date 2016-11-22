@@ -1,8 +1,8 @@
 
 <header>
 <nav>
-  <h5 ng-click="main.toggleMenu()">e l <img src="../images/bg2.gif" width="30px" alt="" />f y</h5>
-  <ul ng-if="main.menuVisible">
+  <h5 ng-click="main.toggleMenu()">e l <img src="/images/bg2.gif" width="30px" alt="" />f y</h5>
+  <ul ng-if="main.menuVisible" style="border: 1px solid gray; border-radius:10px;">
     <li class="logout" ng-if="main.isLoggedIn()"><a ng-click="main.logout()">LOG OUT</a></li>
     <li ng-if="main.isLoggedIn()"><a ng-href="/#/profile/">MY PROFILE</a></li>
   </ul>
@@ -22,11 +22,14 @@
         <li ng-repeat="match in profile.usersMatches" style="list-style: none;">You are <a ng-href="#/profile/{{ match.with._id }}">{{ match.with.fullName }}</a> 's secret santa
         </li>
       </ul>
-      <strong> 🎄GROUPS 🎅</strong>
 
-      <ul style="margin: 10px; list-style: none; border: 0.5px solid gray; padding: 2px; border-radius: 10px;">
-        <li class="names" ng-repeat="groups in profile.usersGroups"> <h5><a ng-href="/#/group/profile/{{groups._id}}" >{{ groups.groupName }}</a></h5></li>
-      </ul>
+      <nav>
+        <strong  ng-click="profile.toggleMenu()"> 🎄GROUPS 🎅</strong>
+        <ul ng-if="profile.menuVisible" style="margin:5px; list-style: none; border: 0.5px solid gray; padding: 2px; border-radius: 10px; position: relative;">
+          <li class="names" ng-repeat="groups in profile.usersGroups"> <h5><a ng-href="/#/group/profile/{{groups._id}}">{{ groups.groupName }}</a></h5></li>
+        </ul>
+      </nav>
+
       <div>
         <div ng-if="profile.isOwnProfile()" class="images">
           <button ng-click=""><a ui-sref="groupsNew" ui-sref-active="active">Create group</a></button>

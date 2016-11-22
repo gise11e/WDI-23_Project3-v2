@@ -1,16 +1,19 @@
 <section class="form">
-  <form ng-submit="register.submit()">
+  <form ng-submit="register.submit()" name="register.form" novalidate>
     <div class="row">
       <label>Full Name</label>
-      <input class="u-full-width" type="text" name="fullName" placeholder="Full Name" ng-model="register.user.fullName" required="required">
+      <input class="u-full-width" type="text" name="fullName" placeholder="Full Name" ng-model="register.user.fullName" required>
       <div ng-messages="register.form.fullName.$error" ng-show="register.form.fullName.$dirty">
-          </div>
+        <p ng-message="required">This is required</p>
+      </div>
     </div>
     <div class="row">
       <label>Email</label>
-      <input class="u-full-width" type="email" name="email" placeholder="Email" ng-model="register.user.email" required="required">
-      <div ng-messages="register.form.email.$error" ng-show="register.form.email.$dirty" >
-          </div>
+      <input class="u-full-width" type="email" name="email" placeholder="Email" ng-model="register.user.email" required>
+      <div ng-messages="register.form.email.$error" ng-show="register.form.email.$dirty">
+        <p ng-message="required">This is required</p>
+        <p ng-message="taken">That address is already in use</p>
+      </div>
     </div>
     <div class="row">
       <label>Profile Image</label>
@@ -18,16 +21,23 @@
     </div>
     <div class="row">
       <label>Password</label>
-      <input class="u-full-width" type="password" name="password" placeholder="Password" ng-model="register.user.password" minlength="5" required="required">
-      <div ng-messages="register.form.password.$error" ng-show="register.form.email.$dirty">
-          </div>
+      <input class="u-full-width" type="password" name="password" placeholder="Password" ng-model="register.user.password" minlength="6" required>
+      <div ng-messages="register.form.password.$error" ng-show="register.form.password.$dirty">
+        <p ng-message="minlength">You need at least 6 characters</p>
+        <p ng-message="required">This is required</p>
+      </div>
     </div>
     <div class="row">
       <label>Password Confirmation</label>
-      <input class="u-full-width" type="password" placeholder="Password Confirmation" ng-model="register.user.passwordConfirmation">
+      <input class="u-full-width" type="password" name="passwordConfirmation" placeholder="Password Confirmation" ng-model="register.user.passwordConfirmation" required>
+
+      <div ng-messages="register.form.passwordConfirmation.$error" ng-show="register.form.passwordConfirmation.$dirty">
+        <p ng-message="required">This is required</p>
+        <p ng-message="match">Passwords do not match</p>
+      </div>
     </div>
 
-  <button>register</button>
+    <button ng-disabled="register.form.$invalid">register</button>
 
     </form>
     Already a member?

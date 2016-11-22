@@ -5,7 +5,7 @@ const validator = require('validator');
 
 const userSchema = new mongoose.Schema({
   fullName: { type: String, required: true },
-  email: { type: String, unique: true, required: true },
+  email: { type: String, unique: true, required: true, message: 'you must input a unique email'},
   profileImage: {type: String, default: 'http://4.bp.blogspot.com/-SRSVCXNxbAc/UrbxxXd06YI/AAAAAAAAFl4/332qncR9pD4/s1600/default-avatar.jpg' },
   likes: { type: Array},
   dislikes: { type: Array},
@@ -21,7 +21,6 @@ function setPasswordConfirmation(passwordConfirmation) {
   this._passwordConfirmation = passwordConfirmation;
 }
 
-
 function validateEmail(email) {
   if (!validator.isEmail(email)) {
     return this.invalidate('email', 'must be a valid email address');
@@ -33,6 +32,7 @@ function validatePassword(password){
 }
 
 function preValidate(next) {
+  console.log(preValidate, this);
   if (this.isNew) {
     if (!this._password && !this.facebookId) {
       this.invalidate('password', 'A password is required.');

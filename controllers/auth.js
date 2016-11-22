@@ -6,7 +6,7 @@ const Invite = require('../models/invite');
 
 function register(req, res){
   User.create(req.body, (err, user) => {
-    if (err) return res.status(500).json({ message: 'Something went wrong.' });
+    if (err) return res.status(500).json({ message: 'Something went wrong.', error: err });
 
     const payload = { _id: user._id, username: user.username };
     const token = jwt.sign(payload, secret, { expiresIn: 60*60*24 });

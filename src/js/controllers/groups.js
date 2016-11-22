@@ -68,6 +68,15 @@ function GroupsShowController(Group, $state, $auth, $http) {
     $http(req).then((res) => alert('drawn group'));
   }
 
+  const userData = $auth.getPayload();
+  const usersId = userData._id;
+
+  function isGroupAdmin() {
+    console.log('Group admin ID:', groupsShow.group.groupAdmin._id, 'Users ID', usersId);
+    console.log(groupsShow.group.groupAdmin._id === usersId ? true : false);
+    return groupsShow.group.groupAdmin._id === usersId ? true : false;
+  }
+
   function addEmail() {
     groupsShow.message ='';
     if(!groupsShow.emailArray.includes(groupsShow.emailToAddToArray)) {
@@ -108,6 +117,7 @@ function GroupsShowController(Group, $state, $auth, $http) {
   groupsShow.addEmail = addEmail;
   groupsShow.sendEmail = sendEmail;
   groupsShow.drawMatches = drawMatches;
+  groupsShow.isGroupAdmin = isGroupAdmin;
 }
 
 GroupsEditController.$inject = ['Group', '$state'];
@@ -135,7 +145,7 @@ function GroupsJoinController(Group, User, $state, $auth, $window) {
     const groupId = $state.params.groupId;
     // if yes, get the group
     Group.get({ id: groupId }, (group) => {
-      
+
     const isInGroup = group.groupMembers.filter(function(member){ return member._id === userId; });
 
       if (isInGroup.length === 0) {

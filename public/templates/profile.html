@@ -35,9 +35,10 @@
         </div>
       </div>
     </div>
+
     <div class="columns" ng-class="{ six: !profile.isOwnProfile(), four: profile.isOwnProfile() }" id="container2" style=" margin: 1%; padding:18px; border-radius:10px;">
       <div class="six columns">
-        <h5><strong>YAY🎁</strong></h5>
+        <h5><strong>🎁 wish list</strong></h5>
         <div class="likes" ng-repeat="likes in profile.user.likes track by $index">
 
           <a ng-click="profile.getGifts(likes,'etsy')"> {{likes}} </a>
@@ -47,7 +48,7 @@
         </div>
       </div>
       <div class="six columns">
-        <h5><strong>NAY💩</strong></h5>
+        <h5><strong>💩 avoid these!</strong></h5><h6 style="text-align:center;">what to avoid</h6>
         <div class="dislikes" ng-repeat="dislikes in profile.user.dislikes track by $index">
           <a>{{dislikes}}</a>
           <div ng-if="profile.isOwnProfile()" ng-click="profile.removeDislike(dislikes, $index)" class="deleteButton">&#10006;</div>
@@ -84,11 +85,11 @@
 <div class="row">
   <div class="giftIdeas twelve columns" style="padding: 18px; border-radius:10px;" ng-if="!profile.isOwnProfile()">
       <div ng-if="profile.site=='amazon'">
-        <h2>suggestions from Amazon</h2>
+        <h4>Suggestions from Amazon</h4>
         <a ng-click="profile.getGifts(randomLike,'etsy')"> <p style="border:2px solid red; padding:5px;"> Switch to Etsy </p></a>
       </div>
         <div ng-if="profile.site=='etsy'">
-          <h2>suggestions from Etsy</h2>
+          <h4>Suggestions from Etsy</h4>
           <a ng-click="profile.getGifts(randomLike,'amazon')"> <p style="border:2px solid red; padding:5px;"> Switch to Amazon </p></a>
         </div>
       <div class="loader" ng-if="!profile.loaded"></div>

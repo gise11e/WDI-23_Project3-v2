@@ -1,12 +1,20 @@
-<section class="groupProfile">
+<header>
+<nav>
+  <h5 ng-click="main.toggleMenu()">e l <img src="../images/bg2.gif" width="30px" alt="" />f y</h5>
+  <ul ng-if="main.menuVisible">
+    <li class="logout" ng-if="main.isLoggedIn()"><a ng-click="main.logout()">LOG OUT</a></li>
+    <li ng-if="main.isLoggedIn()"><a ng-href="/#/profile/">MY PROFILE</a></li>
+  </ul>
+</nav>
+</header>
 
+<section class="groupProfile">
 <div class="groupContainer">
  <h2>   {{ groupsShow.group.groupName }} </h2>
 
- <button ng-click="groupsShow.drawMatches()" class="draw">DRAW NAMES</button>
- <!-- {{groupsShow.group}} -->
+ <button ng-click="groupsShow.drawMatches()" ng-if="groupsShow.isGroupAdmin()" class="draw">DRAW NAMES</button>
 
- <h4>Group Members</h4>
+ <!-- {{groupsShow.group}} -->
 
  <div class="members">
    <ul>
@@ -22,7 +30,7 @@
   <div class="invites">
     <div class="row">
       <!-- <label>Email</label> -->
-      <input type="email" placeholder="email" ng-model="groupsShow.emailToAddToArray">
+      <input type="email" placeholder="enter participant's email" ng-model="groupsShow.emailToAddToArray">
       <button ng-click="groupsShow.addEmail()">Add Participant</button>
       <button ng-click="groupsShow.sendEmail()">Send Invites</button>
     </div>
@@ -38,4 +46,9 @@
   </div>
 
 </div>
+<button>
+  <a ng-href="/#/group/{{group._id}}/edit">Edit Group</a>
+
+</button>
+
 </section>

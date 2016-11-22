@@ -1,5 +1,13 @@
-<h1>Edit Profile</h1>
-
+<header>
+<nav>
+  <h5 ng-click="main.toggleMenu()">e l <img src="../images/bg2.gif" width="30px" alt="" />f y</h5>
+  <ul ng-if="main.menuVisible">
+    <li class="logout" ng-if="main.isLoggedIn()"><a ng-click="main.logout()">LOG OUT</a></li>
+    <li ng-if="main.isLoggedIn()"><a ng-href="/#/profile/">MY PROFILE</a></li>
+  </ul>
+</nav>
+</header>
+<section class="form">
 <form novalidate ng-submit="profileEdit.update()">
   <div class="row">
     <label>Full Name</label>
@@ -13,8 +21,12 @@
     <label>Profile Image</label>
     <input class="u-full-width" type="text" placeholder="Profile Image" ng-model="profileEdit.profile.profileImage">
   </div>
-  
+
 
   <button>Update</button>
 
 </form>
+
+<li style="list-style:none;"><a ng-href="/#/profile/">Cancel</a></li>
+
+</section>

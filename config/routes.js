@@ -37,12 +37,8 @@ router.route('/groups/:id/admin')
 
 router.route('/groups')
 .all(secureRoute.secureRoute)
-.get(groupsController.index);
-// .post(groupsController.create);
-
-
-
-
+.get(groupsController.index)
+.post(groupsController.create);
 
 
 router.route('/gifts/:store/:keyword')

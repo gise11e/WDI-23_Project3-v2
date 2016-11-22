@@ -7,6 +7,16 @@ function MainController($auth, $state, $rootScope, $http) {
   const main = this;
   main.isLoggedIn = $auth.isAuthenticated;
   main.message = null;
+  main.menuVisible = false;
+
+
+function toggleMenu() {
+  if (main.menuVisible === false) {
+    main.menuVisible = true;
+  } else {
+    main.menuVisible = false;
+  }
+}
 
   function logout() {
     $auth.logout()
@@ -32,5 +42,7 @@ function MainController($auth, $state, $rootScope, $http) {
   // $rootScope.$on('$stateChangeStart', secureState);
 
   main.logout = logout;
+  main.toggleMenu = toggleMenu;
+
 
 }

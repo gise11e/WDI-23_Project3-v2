@@ -100,28 +100,11 @@ nav {
   // margin-left: 80%
 
 }
-.newGroupForm {
-  width: 30%;
-  height: 30%;
-  margin-left: 30%;
-
-
-}
-
-.registerForm {
-
-  width: 30%;
-  height: 30%;
-  margin-left: 30%;
-
-}
-
-.profileEdit {
+.form {
   width: 30%;
   height: 30%;
   margin-left: 30%;
 }
-
 
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
@@ -136,13 +119,6 @@ nav {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-
-.loginForm {
-  width: 30%;
-  height: 30%;
-  margin-left: 30%;
-
-}
 
 .giftIdeasList {
   display: inline-block;

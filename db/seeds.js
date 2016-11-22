@@ -8,22 +8,31 @@ User.collection.drop();
 Group.collection.drop();
 
 User.create([{
-  fullName: 'Elfy McElface',
-  email: 'elfexchange16@gmail.com',
-  // likes: ['shoes'],
-  // dislikes: ['fat men','pasta'],
+  fullName: 'Oli',
+  email: 'oli.fen@hotmail.com',
+  likes: ['football', 'flags', 'pokemon', 'cats', 'ferrets', 'beer'],
+  dislikes: ['carrots'],
   password: 'password',
   passwordConfirmation: 'password'
 },{
-  fullName: 'Kris Kringle',
-  // dislikes: [
-  //   'whisky',
-  //   'oranges'
-  // ],
-  email: 'dan@properbo.co.uk',
-  // likes: [
-  //   'skiing'
-  // ],
+  fullName: 'Elfy McElface',
+  likes: ['rabbits', 'the papacy', 'chicken mcnuggets', 'bears', 'beets', 'battlestar galactica'],
+  dislikes: ['water', 'oranges'],
+  email: 'elfy@elfy.com',
+  password: 'password',
+  passwordConfirmation: 'password'
+},{
+  fullName: 'Dilophosaurus',
+  likes: ['poison', 'frills', 'attacking people at night'],
+  dislikes: ['dennis nedry'],
+  email: 'dilo@dilo.com',
+  password: 'password',
+  passwordConfirmation: 'password'
+},{
+  fullName: 'Steven Gerrard',
+  likes: ['liverpool', 'last minute screamers', 'istanbul'],
+  dislikes: ['slip n slide', 'demba ba'],
+  email: 'stevieg@stevieg.com',
   password: 'password',
   passwordConfirmation: 'password'
 }], (err, users) => {

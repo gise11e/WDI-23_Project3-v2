@@ -12,7 +12,8 @@
 <div class="groupContainer">
  <h2>   {{ groupsShow.group.groupName }} </h2>
 
- <button ng-click="groupsShow.drawMatches()" class="draw">DRAW NAMES</button>
+ <button ng-click="groupsShow.drawMatches()" ng-if="groupsShow.isGroupAdmin()" class="draw">DRAW NAMES</button>
+
  <!-- {{groupsShow.group}} -->
 
  <div class="members">

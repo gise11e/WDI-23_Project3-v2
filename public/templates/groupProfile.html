@@ -30,7 +30,7 @@
   <div class="invites">
     <div class="row">
       <!-- <label>Email</label> -->
-      <input type="email" placeholder="email" ng-model="groupsShow.emailToAddToArray">
+      <input type="email" placeholder="enter participant's email" ng-model="groupsShow.emailToAddToArray">
       <button ng-click="groupsShow.addEmail()">Add Participant</button>
       <button ng-click="groupsShow.sendEmail()">Send Invites</button>
     </div>
@@ -46,4 +46,9 @@
   </div>
 
 </div>
+<button>
+  <a ng-href="/#/group/{{group._id}}/edit">Edit Group</a>
+
+</button>
+
 </section>

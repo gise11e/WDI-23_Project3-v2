@@ -5,7 +5,6 @@ angular.module('elfyApp')
 MainController.$inject = ['$auth', '$state', '$rootScope', '$http'];
 function MainController($auth, $state, $rootScope, $http) {
   const main = this;
-
   main.isLoggedIn = $auth.isAuthenticated;
   main.message = null;
   main.menuVisible = false;
@@ -23,9 +22,7 @@ function toggleMenu() {
     $auth.logout()
     .then(() => {
       localStorage.removeItem('userId');
-      main.menuVisible = true;
       $state.go('splash');
-
     });
   }
 

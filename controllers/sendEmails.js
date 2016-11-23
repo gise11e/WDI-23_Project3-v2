@@ -4,10 +4,6 @@ const sgTransport = require('nodemailer-sendgrid-transport');
 
 function sendMail(req, res) {
 
-  // const data = {};
-
-  // const html = ejs.renderTemplate('views/xmasTemplate.ejs', data);
-
   const options = {
     auth: {
       api_key: process.env.SENDGRID_APP_SECRET
@@ -48,7 +44,3 @@ function sendMail(req, res) {
 module.exports = {
   send: sendMail
 };
-
-
-// background-image: url(../images/snow4.gif
-// http://cdn.wallpapersafari.com/59/89/1ZRtkO.jpg || https://s-media-cache-ak0.pinimg.com/736x/11/a5/f5/11a5f56e768778af5c787802cd6fd539.jpg)

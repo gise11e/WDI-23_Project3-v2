@@ -100,7 +100,7 @@
         <ul>
           <li style="margin-bottom:10px;" class="giftIdeasList" ng-repeat="gift in profile.giftArray" ng-if="gift.MediumImage.URL">
             <img ng-src="{{gift.MediumImage.URL}}" style="border-radius:100%;"><br>
-            <a ng-href="{{gift.DetailPageURL}}">{{ gift.ItemAttributes.ListPrice.FormattedPrice }}</a>
+            <a ng-href="{{gift.DetailPageURL}}" target="_blank" >{{ gift.ItemAttributes.ListPrice.FormattedPrice }}</a>
           </li>
         </ul>
     </div>

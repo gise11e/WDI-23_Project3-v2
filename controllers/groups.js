@@ -71,6 +71,7 @@ function groupDraw(req, res) {
           });
           emailMatches.push({
             id: match._id,
+            matchId:matchWith._id,
             to: match.email,
             matchWithName: matchWith.fullName
           });
@@ -82,9 +83,9 @@ function groupDraw(req, res) {
             to: match.to,
             subject: `${group.groupName} secret santa group has been drawn!`,
             body: `You are ${match.matchWithName} 's Secret Santa!`,
-            htmlBody: `<p>You are ${match.matchWithName} 's Secret Santa!, see their profile <a href="https://elfy-secretsanta.herokuapp.com/#/profile/${match._id}"> here </a></p>`
+            htmlBody: `<p>You are ${match.matchWithName} 's Secret Santa!, see their profile <a href="https://elfy-secretsanta.herokuapp.com/#/profile/${match.matchId}"> here </a></p>`
           });
-          console.log(match.matchWithName);
+          console.log("hi",match);
         });
 
         group.matches = matches;

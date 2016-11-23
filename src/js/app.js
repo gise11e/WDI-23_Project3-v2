@@ -51,6 +51,11 @@ function Router($stateProvider, $urlRouterProvider) {
     url: '/profile/:id/edit',
     templateUrl: '/templates/profileEdit.html',
     controller: 'ProfileEditController as profileEdit'
+  })
+  .state('groupEdit', {
+    url: '/group/:id/edit',
+    templateUrl: '/templates/groupEdit.html',
+    controller: 'GroupEditController as groupEdit'
   });
 
   $urlRouterProvider.otherwise('/');

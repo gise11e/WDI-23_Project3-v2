@@ -5,9 +5,7 @@
 body {
   font-family: cabin-sketch, sans-serif;
   text-align: center;
-
 }
-
 
 .xmas {
   color: red;
@@ -108,6 +106,9 @@ nav {
   height: 30%;
   margin-left: 30%;
   margin-top: 5%;
+  align-items: center;
+  text-align: center;
+
 }
 
 .loader {
@@ -133,13 +134,9 @@ nav {
 }
 
 .deleteButton {
-  // display: none;
   float: right;
 }
 
-// .likes:hover .deleteButton {
-//   display: block;
-// }
 
 .likes:hover + .deleteButton {
   display: block;
@@ -158,18 +155,43 @@ nav {
   padding:10px;
 }
 
+#groupsMenu {
+   margin:5px;
+   list-style: none;
+    border: 0.5px solid gray;
+    padding: 2px;
+     border-radius:
+     10px;
+     position: absolute;
+     bottom: -230px;
+
+}
+
+.switch {
+  border:1px solid gray;
+  padding:5px;
+  border-radius:10px;
+}
+
+
 #container1 {
   background: white;
   margin: 10px;
   opacity: 0.9;
+  margin: 1%;
+  padding:18px;
+  border-radius:10px;
 
 }
 #container2 {
   background: white;
   margin: 10px;
   opacity: 0.9;
-
+  margin: 1%;
+  padding:18px;
+  border-radius:10px;
 }
+
 #container3 {
   background: white;
   margin: 10px;
@@ -181,6 +203,8 @@ button {
   background-color: white;
   opacity: 0.9;
   font-family: cabin-sketch, sans-serif;
+  display: inline-block;
+  margin-bottom:10px;
 }
 
 .names {
@@ -195,12 +219,10 @@ button {
   background-size: cover;
 }
 
-
 a {
   text-decoration: none;
   color: red;
 }
-
 
 
 // Under desktop (tablet)

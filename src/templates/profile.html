@@ -12,7 +12,7 @@
 <section class="profilePage">
 
   <div class="row">
-    <div class="columns" ng-class="{ six: !profile.isOwnProfile(), four: profile.isOwnProfile() }" id="container1" style="margin: 1%; padding:18px; border-radius:10px;">
+    <div class="columns" ng-class="{ six: !profile.isOwnProfile(), four: profile.isOwnProfile() }" id="container1" >
       <img ng-src="{{ profile.user.profileImage }}" alt="profileImage" height="200px" width="200px" style="border-radius:100px;" />
       <!-- <drag-drop base64="upload.base64"></drag-drop> -->
       <h5 class="names">{{ profile.user.fullName }}</h5>
@@ -23,12 +23,15 @@
         </li>
       </ul>
 
+    <div ng-if="profile.isOwnProfile()">
       <nav>
-        <button><strong ng-click="profile.toggleMenu()"> 🎄GROUPS 🎅</strong></button>
-        <ul ng-if="profile.menuVisible" style="margin:5px; list-style: none; border: 0.5px solid gray; padding: 2px; border-radius: 10px; position: relative;">
+        <button ui-sref-active="active" ><strong ng-click="profile.toggleMenu()"> 🎄GROUPS 🎅</strong></button>
+
+        <ul ng-if="profile.menuVisible" id="groupsMenu">
           <li class="names" ng-repeat="groups in profile.usersGroups"> <h5><a ng-href="/#/group/profile/{{groups._id}}">{{ groups.groupName }}</a></h5></li>
         </ul>
       </nav>
+    </div>
 
       <div>
         <div ng-if="profile.isOwnProfile()" class="images">
@@ -40,7 +43,7 @@
       </div>
     </div>
 
-    <div class="columns" ng-class="{ six: !profile.isOwnProfile(), four: profile.isOwnProfile() }" id="container2" style=" margin: 1%; padding:18px; border-radius:10px;">
+    <div class="columns" ng-class="{ six: !profile.isOwnProfile(), four: profile.isOwnProfile() }" id="container2" >
       <div class="six columns">
         <h5><strong>🎁 wish list</strong></h5>
         <div class="likes" ng-repeat="likes in profile.user.likes track by $index">
@@ -67,20 +70,17 @@
           {{profile.message}}
           <div class="addLikesAndDislikes">
             <div class="likes">
-              <!-- <form ng-submit="profile.submit()"> -->
-              <!-- <h6>what's your fave colour or book author? are you into sports? do you just love cacti? write about some of your fave things to give your secret santa a clue!</h6> -->
+
               <input class="u-full-width" type="text" name="like" ng-model="profile.likeToAddToArray" placeholder="woolen mittens">
               <button ng-click="profile.add()">add wish list item</button>
             </ul><li ng-repeat="like in profile.likeArray track by $index">{{ like }}</li></ul>
           </div>
           <div class="dislikes">
-            <!-- <h6>are you allergic to chocolate? do you have a phobia of scarves? write about what your secret santa should avoid!</h6> -->
+
             <input class="u-full-width" type="text" name="dislike" ng-model="profile.dislikeToAddToArray" placeholder="scratchy wool"></input>
             <button ng-click="profile.addDislikes()">add avoid item</button>
-            <!-- </ul><li ng-repeat="dislike in profile.dislikeArray track by $index">{{dislike}} </li></ul> -->
           </div>
         </div>
-        <!-- </form> -->
 
       </div>
     </div>
@@ -90,11 +90,11 @@
   <div class="giftIdeas twelve columns" style="padding: 18px; border-radius:10px;" ng-if="!profile.isOwnProfile()">
       <div ng-if="profile.site=='amazon'">
         <h4>Suggestions from Amazon</h4>
-        <a ng-click="profile.getGifts(randomLike,'etsy')"> <p style="border:1px solid gray; padding:5px;border-radius:10px;"> Switch to Etsy </p></a>
+        <a ng-click="profile.getGifts(randomLike,'etsy')"> <p class=> Switch to Etsy </p></a>
       </div>
         <div ng-if="profile.site=='etsy'">
           <h4>Suggestions from Etsy</h4>
-          <a ng-click="profile.getGifts(randomLike,'amazon')"> <p style="border:1px solid gray; padding:5px;border-radius:10px;"> Switch to Amazon </p></a>
+          <a ng-click="profile.getGifts(randomLike,'amazon')"> <p class="switch"> Switch to Amazon </p></a>
         </div>
       <div class="loader" ng-if="!profile.loaded"></div>
         <ul>

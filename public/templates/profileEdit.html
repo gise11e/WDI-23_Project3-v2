@@ -8,25 +8,20 @@
 </nav>
 </header>
 <section class="form">
-<form novalidate ng-submit="profileEdit.update()">
-  <div class="row">
-    <label>Full Name</label>
-    <input class="u-full-width" type="text" placeholder="Full Name" ng-model="profileEdit.profile.fullName">
-  </div>
-  <div class="row">
-    <label>Email</label>
-    <input class="u-full-width" type="email" placeholder="Email" ng-model="profileEdit.profile.email">
-  </div>
-  <div class="row">
-    <label>Profile Image</label>
-    <input class="u-full-width" type="text" placeholder="Profile Image" ng-model="profileEdit.profile.profileImage">
-  </div>
-
-
-  <button>Update</button>
-
-</form>
-
-<li style="list-style:none;"><a ng-href="/#/profile/">Cancel</a></li>
-
+  <form novalidate ng-submit="profileEdit.update()">
+    <div class="row">
+      <label>Full Name</label>
+      <input class="u-full-width" type="text" placeholder="Full Name" ng-model="profileEdit.profile.fullName">
+    </div>
+    <div class="row">
+      <label>Email</label>
+      <input class="u-full-width" type="email" placeholder="Email" ng-model="profileEdit.profile.email">
+    </div>
+    <div class="row">
+      <label>Profile Image</label>
+      <input class="u-full-width" type="text" placeholder="Profile Image" ng-model="profileEdit.profile.profileImage">
+    </div>
+    <button>Update</button>
+  </form>
+  <li style="list-style:none;"><a ng-href="/#/profile/">Cancel</a></li>
 </section>

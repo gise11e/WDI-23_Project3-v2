@@ -49,8 +49,8 @@ function ProfileController(User, $state, $auth, $http, $scope, $rootScope) {
 
   User.get({ id }, (user) => {
     profile.user = user;
-    const randomLike = profile.user.likes[Math.floor(Math.random()*profile.user.likes.length)];
-    getGifts(randomLike,'etsy');
+    profile.randomLike = profile.user.likes[Math.floor(Math.random()*profile.user.likes.length)];
+    getGifts(profile.randomLike,'etsy');
   });
   profile.isLoggedIn = $auth.isAuthenticated;
 

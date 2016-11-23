@@ -1,5 +1,4 @@
 angular.module('elfyApp')
-
 .controller('MainController', MainController);
 
 MainController.$inject = ['$auth', '$state', '$rootScope', '$http'];
@@ -8,10 +7,6 @@ function MainController($auth, $state, $rootScope, $http) {
   main.isLoggedIn = $auth.isAuthenticated;
   main.message = null;
   main.menuVisible = false;
-
-  $rootScope.$on('$stateChangeStart', () => {
-    main.menuVisible = false;
-  });
 
   function toggleMenu() {
     main.menuVisible = !main.menuVisible;
@@ -25,20 +20,20 @@ function MainController($auth, $state, $rootScope, $http) {
     });
   }
 
-  // const protectedStates = ['register', 'login'];
+  const protectedStates = ['profile','groupProfile','profileEdit','groupEdit'];
 
-  // function secureState(e, toSate) {
-  //   main.message = null;
-  //   if(!$auth.isAuthenticated() && protectedStates.includes(toSate.name)) {
-  //     e.preventDefault();
-  //     $state.go('login');
-  //     main.message = 'You must be logged in to go there!';
-  //
-  //   }
-  //
-  // }
-  //
-  // $rootScope.$on('$stateChangeStart', secureState);
+  function secureState(e, toState) {
+    main.menuVisible = false;
+    main.message = null;
+    if(!$auth.isAuthenticated() && protectedStates.includes(toState.name)) {
+      e.preventDefault();
+      $state.go('login');
+      main.message = 'You must be logged in to go there!';
+    }
+
+  }
+
+  $rootScope.$on('$stateChangeStart', secureState);
 
   main.logout = logout;
   main.toggleMenu = toggleMenu;

@@ -4,10 +4,6 @@ const sgTransport = require('nodemailer-sendgrid-transport');
 
 function sendMail(req, res) {
 
-  // const data = {};
-
-  // const html = ejs.renderTemplate('views/xmasTemplate.ejs', data);
-
   const options = {
     auth: {
       api_key: process.env.SENDGRID_APP_SECRET
@@ -15,12 +11,12 @@ function sendMail(req, res) {
   };
 
   const textBody = `You have been invited to join a secret santa group called: ${req.body.groupName},
-  If you would like to join please click this link http://localhost:8000/#/join/${req.body.groupId}`;
+  If you would like to join please click this link https://elfy-secretsanta.herokuapp.com/#/join/${req.body.groupId}`;
   const htmlBody =
   `<body style="background-image: url(http://www.dear-santaclaus.co.uk/wp-content/uploads/2015/10/envelope.jpg); background-repeat: no-repeat; background-size: 80% 70%;">
   <h4 style="font-family: classic-comic, monospace;color: black; padding:90px;"> Join me on ${req.body.groupName}, <br> my Secret Santa group!
-  <br> by following this <br> link
-  http://localhost:8000/#/join/${req.body.groupId}</h4>
+  <br> by following this <br>
+  <a href="https://elfy-secretsanta.herokuapp.com/#/join/${req.body.groupId}">link</a></h4>
   </body>`;
   const email = {
     to: req.body.emailArray,
@@ -48,7 +44,3 @@ function sendMail(req, res) {
 module.exports = {
   send: sendMail
 };
-
-
-// background-image: url(../images/snow4.gif
-// http://cdn.wallpapersafari.com/59/89/1ZRtkO.jpg || https://s-media-cache-ak0.pinimg.com/736x/11/a5/f5/11a5f56e768778af5c787802cd6fd539.jpg)

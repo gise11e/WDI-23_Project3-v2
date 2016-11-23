@@ -28,7 +28,7 @@
         <button ui-sref-active="active" ><strong ng-click="profile.toggleMenu()"> 🎄GROUPS 🎅</strong></button>
 
         <ul ng-if="profile.menuVisible" id="groupsMenu">
-          <li class="names" ng-repeat="groups in profile.usersGroups"> <h5><a ng-href="/#/group/profile/{{groups._id}}">{{ groups.groupName }}</a></h5></li>
+          <li ng-repeat="groups in profile.usersGroups"> <p><a class="groupMenuNames" ng-href="/#/group/profile/{{groups._id}}">{{ groups.groupName }}</a></p></li>
         </ul>
       </nav>
     </div>
@@ -101,7 +101,7 @@
         <ul>
           <li style="margin-bottom:10px;" class="giftIdeasList" ng-repeat="gift in profile.giftArray" ng-if="gift.MediumImage.URL">
             <img ng-src="{{gift.MediumImage.URL}}" style="border-radius:100%;"><br>
-            <a ng-href="{{gift.DetailPageURL}}">{{ gift.ItemAttributes.ListPrice.FormattedPrice }}</a>
+            <a ng-href="{{gift.DetailPageURL}}" target="_blank" >{{ gift.ItemAttributes.ListPrice.FormattedPrice }}</a>
           </li>
         </ul>
     </div>

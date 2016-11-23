@@ -58,6 +58,13 @@ nav {
 
 }
 
+.groupMenuNames {
+  font-size: 22px;
+  color:black;
+  font-family: sniglet, sans-serif;
+
+}
+
 
 .drag-drop {
   min-height: 250px;
@@ -80,13 +87,9 @@ nav {
 
 }
 
-.draw {
-  // margin-left: 35%;
-}
+
 .members {
-  // margin-left: 35%;
-  // margin-top: 5%;
-  // margin-bottom: 5%;
+
   margin: 30px;
 
 }
@@ -97,10 +100,6 @@ nav {
 
 }
 
-.invites {
-  // margin-left: 80%
-
-}
 .form {
   width: 30%;
   height: 30%;
@@ -163,7 +162,9 @@ nav {
      border-radius:
      10px;
      position: absolute;
-     bottom: -230px;
+     bottom: -250px;
+     min-width: 200px;
+     z-index: 1;
 
 }
 
@@ -196,6 +197,7 @@ nav {
   background: white;
   margin: 10px;
   opacity: 0.9;
+
 }
 
 button {
@@ -210,6 +212,7 @@ button {
 .names {
 
   font-family: sniglet, sans-serif;
+  color:black;
 
 }
 

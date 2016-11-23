@@ -73,6 +73,4 @@ function Auth($authProvider) {
     clientId: '1117238161723560'
   });
 
-  console.log($authProvider);
-
 }

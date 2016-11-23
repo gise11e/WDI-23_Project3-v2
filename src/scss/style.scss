@@ -164,6 +164,7 @@ nav {
      position: absolute;
      bottom: -300px;
      min-width: 200px;
+     z-index: 1;
 
 }
 
@@ -196,6 +197,7 @@ nav {
   background: white;
   margin: 10px;
   opacity: 0.9;
+
 }
 
 button {

@@ -14,10 +14,10 @@ function RegisterController($auth, $state) {
     })
     .catch((res) => {
       console.log(res);
-      if(res.data.error.code && res.data.error.code === 11000) {
+      if(res.data.error.code === 11000) {
         register.form.email.$setValidity('taken', false);
       }
-      if(res.data.error.errors.passwordConfirmation) {
+      if(res.data.error.passwordConfirmation) {
         register.form.passwordConfirmation.$setValidity('match', false);
       }
     }).catch((response) => {

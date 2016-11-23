@@ -90,11 +90,12 @@
   <div class="giftIdeas twelve columns" style="padding: 18px; border-radius:10px;" ng-if="!profile.isOwnProfile()">
       <div ng-if="profile.site=='amazon'">
         <h4>Suggestions from Amazon</h4>
-        <a ng-click="profile.getGifts(randomLike,'etsy')"> <p class=> Switch to Etsy </p></a>
+      
+        <a ng-click="profile.getGifts(profile.randomLike,'etsy')"> <p class=> Switch to Etsy </p></a>
       </div>
         <div ng-if="profile.site=='etsy'">
           <h4>Suggestions from Etsy</h4>
-          <a ng-click="profile.getGifts(randomLike,'amazon')"> <p class="switch"> Switch to Amazon </p></a>
+          <a ng-click="profile.getGifts(profile.randomLike,'amazon')"> <p class="switch"> Switch to Amazon </p></a>
         </div>
       <div class="loader" ng-if="!profile.loaded"></div>
         <ul>

@@ -9,46 +9,33 @@
 </header>
 
 <section class="groupProfile">
-<div class="groupContainer">
- <h2>   {{ groupsShow.group.groupName }} </h2>
+  <div class="groupContainer">
+   <h2>   {{ groupsShow.group.groupName }} </h2>
+   <button ng-click="groupsShow.drawMatches()" ng-if="groupsShow.isGroupAdmin()" class="draw">DRAW NAMES</button>
 
- <button ng-click="groupsShow.drawMatches()" ng-if="groupsShow.isGroupAdmin()" class="draw">DRAW NAMES</button>
-
- <!-- {{groupsShow.group}} -->
-
- <div class="members">
-   <ul>
-
-     <li class="membersList" ng-repeat="members in groupsShow.group.groupMembers"> <a ng-href="#/profile/{{ members._id }}">{{members.fullName}}</a><br>
-       <img ng-src="{{members.profileImage}}" height="200px" width="200px" style="border-radius:100px; border:1px black solid;"/>
-      </li>
-
-
-   </ul>
- </div>
-
-  <div class="invites">
-    <div class="row">
-      <!-- <label>Email</label> -->
-      <input type="email" placeholder="enter participant's email" ng-model="groupsShow.emailToAddToArray">
-      <button ng-click="groupsShow.addEmail()">Add Participant</button>
-      <button ng-click="groupsShow.sendEmail()">Send Invites</button>
+   <div class="members">
+     <ul>
+       <li class="membersList" ng-repeat="members in groupsShow.group.groupMembers"> <a ng-href="#/profile/{{ members._id }}">{{members.fullName}}</a><br>
+         <img ng-src="{{members.profileImage}}" height="200px" width="200px" style="border-radius:100px; border:1px black solid;"/>
+        </li>
+     </ul>
+   </div>
+    <div class="invites">
+      <div class="row">
+        <!-- <label>Email</label> -->
+        <input type="email" placeholder="enter participant's email" ng-model="groupsShow.emailToAddToArray">
+        <button ng-click="groupsShow.addEmail()">Add Participant</button>
+        <button ng-click="groupsShow.sendEmail()">Send Invites</button>
+      </div>
+     <p>
+       {{ groupsShow.message }}
+     </p>
+     <ul>
+       <li style="list-style: none;" ng-repeat="email in groupsShow.emailArray track by $index" > {{email}}</li>
+     </ul>
     </div>
-
-   <!-- <strong>Invitees</strong> -->
-   <p>
-     {{ groupsShow.message }}
-   </p>
-   <ul>
-     <li style="list-style: none;" ng-repeat="email in groupsShow.emailArray track by $index" > {{email}}</li>
-   </ul>
-
   </div>
-
-</div>
-<button>
-  <a ng-href="/#/group/{{group._id}}/edit">Edit Group</a>
-
-</button>
-
+    <button>
+      <a ng-href="/#/group/{{group._id}}/edit">Edit Group</a>
+    </button>
 </section>

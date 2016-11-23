@@ -5,20 +5,6 @@ angular.module('elfyApp')
 .controller('GroupsJoinController', GroupsJoinController);
 // .controller('groupController', groupController);
 
-
-//
-// groupController.$inject = ['Group', '$state', '$auth'];
-// function groupController(Group, $state, $auth) {
-//   const group = this;
-//   const userData = $auth.getPayload();
-//
-//   console.log(userData);
-//
-//   group.group =Group.get({ id: userData._id });
-// }
-
-
-
 GroupsNewController.$inject = ['Group', '$state', '$auth'];
 function GroupsNewController(Group, $state, $auth) {
   const groupsNew = this;
@@ -27,8 +13,6 @@ function GroupsNewController(Group, $state, $auth) {
 
 
   function createGroupProfile() {
-    // console.log();
-    // groupsNew.group.emailArray = groupsNew.emailArray;
     groupsNew.group.groupAdmin = $auth.getPayload()._id;
     groupsNew.group.groupMembers.push($auth.getPayload()._id);
 
@@ -65,7 +49,7 @@ function GroupsShowController(Group, $state, $auth, $http) {
       url: '/groups/' + groupsShow.group._id + '/draw',
       headers: { authorizaton: token }
     };
-    $http(req).then(() => alert('drawn group'));
+    $http(req).then(() => alert('members matched - check your email!'));
   }
 
   const userData = $auth.getPayload();
@@ -112,7 +96,6 @@ function GroupsShowController(Group, $state, $auth, $http) {
   }
 
   groupsShow.delete = deleteGroup;
-
   groupsShow.isLoggedIn = $auth.isAuthenticated;
   groupsShow.addEmail = addEmail;
   groupsShow.sendEmail = sendEmail;
@@ -120,21 +103,24 @@ function GroupsShowController(Group, $state, $auth, $http) {
   groupsShow.isGroupAdmin = isGroupAdmin;
 }
 
+
 GroupsEditController.$inject = ['Group', '$state'];
 function GroupsEditController(Group, $state) {
-  const groupsEdit = this;
+  const groupEdit = this;
 
-  groupsEdit.group = Group.get($state.params);
+  groupEdit.group = Group.get($state.params);
 
   function update() {
-    groupsEdit.group.$update(() => {
-      $state.go('groupProfile', $state.params);
+    groupEdit.group.$update(() => {
+      $state.go('groupEdit', $state.params);
     });
   }
 
   this.update = update;
 
 }
+
+
 
 GroupsJoinController.$inject = ['Group', 'User','$state', '$auth', '$window'];
 function GroupsJoinController(Group, User, $state, $auth, $window) {

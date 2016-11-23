@@ -39,8 +39,9 @@ function facebook(req,res) {
           fullName: profile.name
         });
       } else {
+        user.profileImage = user.profileImage || profile.picture.data.url;
         user.facebookId = profile.id;
-        user.profileImage = profile.picture.data.url;
+        // user.profileImage = profile.picture.data.url;
       }
 
       user.save((err, user) => {

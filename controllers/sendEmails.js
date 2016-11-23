@@ -18,11 +18,9 @@ function sendMail(req, res) {
   If you would like to join please click this link http://localhost:8000/#/join/${req.body.groupId}`;
   const htmlBody =
   `<body style="background-image: url(http://www.dear-santaclaus.co.uk/wp-content/uploads/2015/10/envelope.jpg); background-repeat: no-repeat; background-size: 80% 70%;">
-  <h1 style="font-family: comic sans, monospace;">Welcome to</h1> <h1 style="font-family: Courier New, monospace; color: red; font-size:50px;"> elfy!</h1>
-  <p style="font-family: cabin-sketch,sans-serif"> You have been invited to join a secret santa group called: <strong>${req.body.groupName},</strong>
-  If you would like to join <br> please
-  <strong><a style="color: red;" href="http://localhost:8000/#/join/${req.body.groupId}">click this link</a></strong>
-  </p>
+  <h4 style="font-family: classic-comic, monospace;color: red; padding:90px;"> Join me on ${req.body.groupName}, <br> my Secret Santa group!
+  <br> by following this <br> link
+  http://localhost:8000/#/join/${req.body.groupId}</h4>
   </body>`;
   const email = {
     to: req.body.emailArray,

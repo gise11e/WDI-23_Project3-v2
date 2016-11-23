@@ -127,7 +127,7 @@ function GroupsEditController(Group, $state) {
   groupsEdit.group = Group.get($state.params);
 
   function update() {
-    groupsEdit.group.$update(() => {
+    Group.update(groupsEdit.group, () => {
       $state.go('groupProfile', $state.params);
     });
   }

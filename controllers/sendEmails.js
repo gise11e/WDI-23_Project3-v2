@@ -9,9 +9,6 @@ function sendMail(req, res) {
       api_key: process.env.SENDGRID_APP_SECRET
     }
   };
-
-  const textBody = `Join me on ${req.body.groupName}, my Secret San
-  If you would like to join please click this link https://elfy-secretsanta.herokuapp.com/#/join/${req.body.groupId}`;
   const htmlBody =
   `<body style="background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/bdf8b613329229.5627298ee8d84.jpg); background-repeat: no-repeat; background-size: 100%;">
   <h4 style="font-family: helvetica; color:white;background-color:#b1cbe2;border:1px solid gray; border-radius:5px; font-weight: bold;font-style:italic; padding:25px;margin: 30px 5px;"> Join me on <span style="color:red;"> ${req.body.groupName} </span>, my secret santa group!
@@ -22,7 +19,6 @@ function sendMail(req, res) {
     to: req.body.emailArray,
     from: 'elfy.secretsanta@gmail.com',
     subject: 'Elfy',
-    text: textBody,
     html: htmlBody
   };
 

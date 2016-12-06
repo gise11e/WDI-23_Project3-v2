@@ -103,6 +103,7 @@ function groupDraw(req, res) {
             subject: `${group.groupName} secret santa group has been drawn!`,
             body: `You are ${match.matchWithName} 's Secret Santa!`,
             htmlBody: `<p>You are ${match.matchWithName} 's Secret Santa!, see their profile <a href="https://elfy-secretsanta.herokuapp.com/#/profile/${match.matchId}"> here </a></p>`
+            
           });
           console.log("hi",match);
         });

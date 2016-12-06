@@ -8,6 +8,13 @@ function groupsIndex(req, res) {
   });
 }
 
+function groupsEdit(req, res) {
+  Group.edit(req.body, (err, group) => {
+    if(err) return res.status(400).json({ error: err });
+    return res.json(group);
+  });
+}
+
 function groupsCreate(req, res) {
   Group.create(req.body, (err, group) => {
     if(err) return res.status(400).json({ error: err });
@@ -117,6 +124,7 @@ function groupsGetAdmin(req, res) {
 module.exports = {
   index: groupsIndex,
   create: groupsCreate,
+  edit: groupsEdit,
   show: groupsShow,
   update: groupsUpdate,
   draw: groupDraw,

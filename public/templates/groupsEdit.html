@@ -1,13 +1,20 @@
 <section class="form">
-<form novalidate ng-submit="groupEdit.update()">
-  <div class="row">
-    <label>Group Name</label>
-    <input class="u-full-width" type="text" placeholder="Group Name" ng-model="groupsEdit.group.groupName">
-  </div>
-
-  <button>update</button>
+		 <form novalidate ng-submit="groupsEdit.update()">
+    <div class="row">
+      <label>Name</label>
+      <input class="u-full-width" type="text" placeholder="Group Name" ng-model="groupsEdit.group.groupName">
+    </div>
+    <div class="row">
+      <label>Budget</label>
+      <input class="u-full-width" type="number" placeholder="£" ng-model="groupsEdit.group.budget">
+    </div>
+    <div class="row">
+      <label>Event Date</label>
+      <input class="u-full-width" type="date" placeholder="Event Date" ng-model="groupsEdit.group.eventDate">
+    </div>
+    <div class="row">
+      <div class="row">
+  <button>Update</button>
   <button> delete group </button>
-
-</form>
-
+  </form>
 </section>

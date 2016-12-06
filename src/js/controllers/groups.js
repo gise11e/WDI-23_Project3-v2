@@ -106,12 +106,12 @@ function GroupsShowController(Group, $state, $auth, $http) {
 
 GroupsEditController.$inject = ['Group', '$state'];
 function GroupsEditController(Group, $state) {
-  const groupEdit = this;
+  const groupsEdit = this;
 
-  groupEdit.group = Group.get($state.params);
+  groupsEdit.group = Group.get($state.params);
 
   function update() {
-    Group.update(groupEdit.group, () => {
+    Group.update(groupsEdit.group, () => {
       $state.go('groupProfile', $state.params);
     });
   }
@@ -119,9 +119,6 @@ function GroupsEditController(Group, $state) {
   this.update = update;
 
 }
-
-
-
 GroupsJoinController.$inject = ['Group', 'User','$state', '$auth', '$window'];
 function GroupsJoinController(Group, User, $state, $auth, $window) {
 

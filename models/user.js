@@ -6,7 +6,7 @@ const validator = require('validator');
 const userSchema = new mongoose.Schema({
   fullName: { type: String, required: true },
   email: { type: String, unique: true, required: true, message: 'you must input a unique email'},
-  profileImage: {type: String, default: 'http://4.bp.blogspot.com/-SRSVCXNxbAc/UrbxxXd06YI/AAAAAAAAFl4/332qncR9pD4/s1600/default-avatar.jpg' },
+  profileImage: {type: String, default: '../images/profile1.gif' },
   likes: { type: Array},
   dislikes: { type: Array},
   facebookId: { type: String },

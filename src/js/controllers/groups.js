@@ -89,13 +89,6 @@ function GroupsShowController(Group, $state, $auth, $http) {
     });
   }
 
-  function deleteGroup() {
-    groupsShow.group.$remove(() => {
-      $state.go('groupsNew');
-    });
-  }
-
-  groupsShow.delete = deleteGroup;
   groupsShow.isLoggedIn = $auth.isAuthenticated;
   groupsShow.addEmail = addEmail;
   groupsShow.sendEmail = sendEmail;
@@ -104,9 +97,12 @@ function GroupsShowController(Group, $state, $auth, $http) {
 }
 
 
-GroupsEditController.$inject = ['Group', '$state'];
-function GroupsEditController(Group, $state) {
+GroupsEditController.$inject = ['Group', '$state', '$auth'];
+function GroupsEditController(Group, $state, $auth) {
   const groupsEdit = this;
+
+  const userData = $auth.getPayload();
+  const usersId = userData._id;
 
   groupsEdit.group = Group.get($state.params);
 
@@ -116,9 +112,19 @@ function GroupsEditController(Group, $state) {
     });
   }
 
-  this.update = update;
+  function deleteGroup() {
+    groupsEdit.group.$remove(() => {
+      $state.go('profile', {id: usersId});
+    });
+  }
 
+  this.delete = deleteGroup;
+  this.update = update;
 }
+
+
+
+
 GroupsJoinController.$inject = ['Group', 'User','$state', '$auth', '$window'];
 function GroupsJoinController(Group, User, $state, $auth, $window) {
 

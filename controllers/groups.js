@@ -15,6 +15,18 @@ function groupsEdit(req, res) {
   });
 }
 
+function groupsDelete(req, res) {
+  Group.findById(req.params.id, (err, group) => {
+    if(err) return res.status(500).json({ error: err });
+    if(!group) return res.status(404).json({ error: 'Not found' });
+
+    group.remove(err => {
+      if(err) return res.status(500).json({ error: err });
+      res.status(204).send();
+    });
+  });
+}
+
 function groupsCreate(req, res) {
   Group.create(req.body, (err, group) => {
     if(err) return res.status(400).json({ error: err });
@@ -126,10 +138,10 @@ module.exports = {
   index: groupsIndex,
   create: groupsCreate,
   edit: groupsEdit,
+  delete: groupsDelete,
   show: groupsShow,
   update: groupsUpdate,
   draw: groupDraw,
   getUsersGroups: getUsersGroups,
   getGroupAdmin: groupsGetAdmin
-  // delete: groupsDelete
 };

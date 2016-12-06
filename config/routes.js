@@ -40,6 +40,10 @@ router.route('/groups')
 .get(groupsController.index)
 .post(groupsController.create);
 
+router.route('/groups/:id')
+.delete(secureRoute.secureRoute, groupsController.delete);
+
+
 
 router.route('/gifts/:store/:keyword')
 .get(usersController.gifts);

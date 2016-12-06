@@ -10,13 +10,13 @@ function sendMail(req, res) {
     }
   };
 
-  const textBody = `Join me on ${req.body.groupName}, my Secret Santa group!
+  const textBody = `Join me on ${req.body.groupName}, my Secret San
   If you would like to join please click this link https://elfy-secretsanta.herokuapp.com/#/join/${req.body.groupId}`;
   const htmlBody =
-  `<body style="background-image: url(http://www.dear-santaclaus.co.uk/wp-content/uploads/2015/10/envelope.jpg); background-repeat: no-repeat; background-size: 80% 70%;">
-  <h4 style="font-family: classic-comic, monospace;color: black; padding:90px;"> Join me on ${req.body.groupName}, <br> my Secret Santa group!
-  <br> by following this <br>
-  <a href="https://elfy-secretsanta.herokuapp.com/#/join/${req.body.groupId}">link</a></h4>
+  `<body style="background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/bdf8b613329229.5627298ee8d84.jpg); background-repeat: no-repeat; background-size: 100%;">
+  <h4 style="font-family: helvetica; color:white;background-color:#b1cbe2;border:1px solid gray; border-radius:5px; font-weight: bold;font-style:italic; padding:25px;margin: 30px 5px;"> Join me on <span style="color:red;"> ${req.body.groupName} </span>, my secret santa group!
+   See you
+  <a href="https://elfy-secretsanta.herokuapp.com/#/join/${req.body.groupId}" style="color:red;"> there</a> </h4>
   </body>`;
   const email = {
     to: req.body.emailArray,

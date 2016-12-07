@@ -11,6 +11,9 @@
 <section class="groupProfile">
   <div class="groupContainer">
    <h2>   {{ groupsShow.group.groupName }} </h2>
+   <div class="details">
+     <h6> avg spend: £ {{ groupsShow.group.budget }}</h6>
+   </div>
    <button ng-click="groupsShow.drawMatches()" ng-if="groupsShow.isGroupAdmin()" class="draw">DRAW NAMES</button>
 
    <div class="members">

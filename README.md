@@ -15,16 +15,11 @@ Technologies:
 -------------
 
 *scss
-*Exceptional and beautiful unique styling
 *Facebook oauth login
-*Trello
-*Balsamiq
 *nodemailer
 *Sendgrid
 *Etsy api
 *Amazon api
-
-
 
 Methodology:
 -----------
